@@ -4,14 +4,14 @@ package m1;
 option go_package = "./;m1";
 
 service FileService{
-    rpc GetFiles(GetFilesRequest) returns (GetFilesResponse) {};
-    rpc GetFile(GetFileRequest) returns (GetFileResponse) {};
+    rpc List(ListRequest) returns (GetFilesResponse) {};
+    rpc Search(SearchRequest) returns (GetFileResponse) {};
 }
 
-message GetFilesRequest{ 
+message ListRequest{ 
 }
 
-message GetFileRequest{
+message SearchRequest{
     string name = 1;
 }
 

@@ -22,8 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FileServiceClient interface {
-	GetFiles(ctx context.Context, in *GetFilesRequest, opts ...grpc.CallOption) (*GetFilesResponse, error)
-	GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
+	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*GetFilesResponse, error)
+	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
 }
 
 type fileServiceClient struct {
@@ -34,18 +34,18 @@ func NewFileServiceClient(cc grpc.ClientConnInterface) FileServiceClient {
 	return &fileServiceClient{cc}
 }
 
-func (c *fileServiceClient) GetFiles(ctx context.Context, in *GetFilesRequest, opts ...grpc.CallOption) (*GetFilesResponse, error) {
+func (c *fileServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*GetFilesResponse, error) {
 	out := new(GetFilesResponse)
-	err := c.cc.Invoke(ctx, "/m1.FileService/GetFiles", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/m1.FileService/List", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fileServiceClient) GetFile(ctx context.Context, in *GetFileRequest, opts ...grpc.CallOption) (*GetFileResponse, error) {
+func (c *fileServiceClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*GetFileResponse, error) {
 	out := new(GetFileResponse)
-	err := c.cc.Invoke(ctx, "/m1.FileService/GetFile", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/m1.FileService/Search", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -56,8 +56,8 @@ func (c *fileServiceClient) GetFile(ctx context.Context, in *GetFileRequest, opt
 // All implementations must embed UnimplementedFileServiceServer
 // for forward compatibility
 type FileServiceServer interface {
-	GetFiles(context.Context, *GetFilesRequest) (*GetFilesResponse, error)
-	GetFile(context.Context, *GetFileRequest) (*GetFileResponse, error)
+	List(context.Context, *ListRequest) (*GetFilesResponse, error)
+	Search(context.Context, *SearchRequest) (*GetFileResponse, error)
 	mustEmbedUnimplementedFileServiceServer()
 }
 
@@ -65,11 +65,11 @@ type FileServiceServer interface {
 type UnimplementedFileServiceServer struct {
 }
 
-func (UnimplementedFileServiceServer) GetFiles(context.Context, *GetFilesRequest) (*GetFilesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetFiles not implemented")
+func (UnimplementedFileServiceServer) List(context.Context, *ListRequest) (*GetFilesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedFileServiceServer) GetFile(context.Context, *GetFileRequest) (*GetFileResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetFile not implemented")
+func (UnimplementedFileServiceServer) Search(context.Context, *SearchRequest) (*GetFileResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
 }
 func (UnimplementedFileServiceServer) mustEmbedUnimplementedFileServiceServer() {}
 
@@ -84,38 +84,38 @@ func RegisterFileServiceServer(s grpc.ServiceRegistrar, srv FileServiceServer) {
 	s.RegisterService(&FileService_ServiceDesc, srv)
 }
 
-func _FileService_GetFiles_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetFilesRequest)
+func _FileService_List_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FileServiceServer).GetFiles(ctx, in)
+		return srv.(FileServiceServer).List(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/m1.FileService/GetFiles",
+		FullMethod: "/m1.FileService/List",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FileServiceServer).GetFiles(ctx, req.(*GetFilesRequest))
+		return srv.(FileServiceServer).List(ctx, req.(*ListRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FileService_GetFile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetFileRequest)
+func _FileService_Search_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SearchRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FileServiceServer).GetFile(ctx, in)
+		return srv.(FileServiceServer).Search(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/m1.FileService/GetFile",
+		FullMethod: "/m1.FileService/Search",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FileServiceServer).GetFile(ctx, req.(*GetFileRequest))
+		return srv.(FileServiceServer).Search(ctx, req.(*SearchRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -128,12 +128,12 @@ var FileService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FileServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetFiles",
-			Handler:    _FileService_GetFiles_Handler,
+			MethodName: "List",
+			Handler:    _FileService_List_Handler,
 		},
 		{
-			MethodName: "GetFile",
-			Handler:    _FileService_GetFile_Handler,
+			MethodName: "Search",
+			Handler:    _FileService_Search_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
