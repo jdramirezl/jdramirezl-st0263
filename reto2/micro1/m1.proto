@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package m1;
+option go_package = "./;m1";
+
+service FileService{
+    rpc GetFiles(GetFilesRequest) returns (GetFilesResponse) {};
+    rpc GetFile(GetFileRequest) returns (GetFileResponse) {};
+}
+
+message GetFilesRequest{ 
+}
+
+message GetFileRequest{
+    string name = 1;
+}
+
+message GetFileResponse{
+    string id = 1;
+    string name = 2;
+}
+
+message GetFilesResponse{
+    repeated GetFileResponse files = 1;
+}
+
