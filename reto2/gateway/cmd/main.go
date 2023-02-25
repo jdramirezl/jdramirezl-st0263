@@ -61,6 +61,7 @@ func NewRouter(conn *grpc.ClientConn) http.Handler {
 		} else {
 			log.Printf("Response from server search: %s", "RabbitMQ")
 		}
+		robin = !robin
 
 		
 	})
