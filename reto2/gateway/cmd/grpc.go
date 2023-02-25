@@ -1,24 +1,28 @@
-package m1
+package main
 
 import (
-	"log"
+	m1 "retos/reto2/gateway/internal"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
 
-func search()(m1.GetFilesResponse, error){
+func Search(conn *grpc.ClientConn, _name string) (*m1.FileResponse, error) {
 	client := m1.NewFileServiceClient(conn)
-	listrequest := m1.ListRequest{}
-	return client.List(context.Background(), listrequest)
+	searchreq := m1.SearchRequest{Name: _name}
+	return client.Search(context.Background(), &searchreq)
 }
 
-func list()(m1.GetFilesResponse, error){
+func List(conn *grpc.ClientConn) (*m1.FileResponse, error) {
 	client := m1.NewFileServiceClient(conn)
 	listrequest := m1.ListRequest{}
-	return client.List(context.Background(), listrequest)
+	res, err := client.List(context.Background(), &listrequest)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
-func createConnection(url string) (*grpc.ClientConn, error){
+func CreateConnection(url string) (*grpc.ClientConn, error) {
 	return grpc.Dial(url, grpc.WithInsecure())
 }

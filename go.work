@@ -1,3 +1,6 @@
 go 1.20
 
-use ./reto2/micro1
+use (
+	./reto2/micro1
+	./reto2/gateway
+)

@@ -7,12 +7,9 @@ import (
 )
 
 type Configuration struct {
-	APIPort    string
-	APIIP      string
-	GRPCPort   string
-	GRPCIP     string
-	RabbitPort string
-	RabbitIP   string
+	IP        string
+	Port      string
+	Directory string
 }
 
 func loadConfig(directory string) (*Configuration, error) {
@@ -33,18 +30,12 @@ func loadConfig(directory string) (*Configuration, error) {
 		}
 
 		switch parts[0] {
-		case "API_PORT":
-			config.APIPort = parts[1]
-		case "API_IP":
-			config.APIIP = parts[1]
-		case "GRPC_PORT":
-			config.GRPCPort = parts[1]
-		case "GRPC_IP":
-			config.GRPCIP = parts[1]
-		case "RABBIT_PORT":
-			config.RabbitPort = parts[1]
-		case "RABBIT_IP":
-			config.RabbitIP = parts[1]
+		case "IP":
+			config.IP = parts[1]
+		case "PORT":
+			config.Port = parts[1]
+		case "DIRECTORY":
+			config.Directory = parts[1]
 		}
 	}
 

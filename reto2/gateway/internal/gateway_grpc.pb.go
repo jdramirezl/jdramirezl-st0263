@@ -22,8 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FileServiceClient interface {
-	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*GetFilesResponse, error)
-	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*GetFileResponse, error)
+	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*FileResponse, error)
+	Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*FileResponse, error)
 }
 
 type fileServiceClient struct {
@@ -34,8 +34,8 @@ func NewFileServiceClient(cc grpc.ClientConnInterface) FileServiceClient {
 	return &fileServiceClient{cc}
 }
 
-func (c *fileServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*GetFilesResponse, error) {
-	out := new(GetFilesResponse)
+func (c *fileServiceClient) List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*FileResponse, error) {
+	out := new(FileResponse)
 	err := c.cc.Invoke(ctx, "/m1.FileService/List", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -43,8 +43,8 @@ func (c *fileServiceClient) List(ctx context.Context, in *ListRequest, opts ...g
 	return out, nil
 }
 
-func (c *fileServiceClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*GetFileResponse, error) {
-	out := new(GetFileResponse)
+func (c *fileServiceClient) Search(ctx context.Context, in *SearchRequest, opts ...grpc.CallOption) (*FileResponse, error) {
+	out := new(FileResponse)
 	err := c.cc.Invoke(ctx, "/m1.FileService/Search", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -56,8 +56,8 @@ func (c *fileServiceClient) Search(ctx context.Context, in *SearchRequest, opts 
 // All implementations must embed UnimplementedFileServiceServer
 // for forward compatibility
 type FileServiceServer interface {
-	List(context.Context, *ListRequest) (*GetFilesResponse, error)
-	Search(context.Context, *SearchRequest) (*GetFileResponse, error)
+	List(context.Context, *ListRequest) (*FileResponse, error)
+	Search(context.Context, *SearchRequest) (*FileResponse, error)
 	mustEmbedUnimplementedFileServiceServer()
 }
 
@@ -65,10 +65,10 @@ type FileServiceServer interface {
 type UnimplementedFileServiceServer struct {
 }
 
-func (UnimplementedFileServiceServer) List(context.Context, *ListRequest) (*GetFilesResponse, error) {
+func (UnimplementedFileServiceServer) List(context.Context, *ListRequest) (*FileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
 }
-func (UnimplementedFileServiceServer) Search(context.Context, *SearchRequest) (*GetFileResponse, error) {
+func (UnimplementedFileServiceServer) Search(context.Context, *SearchRequest) (*FileResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Search not implemented")
 }
 func (UnimplementedFileServiceServer) mustEmbedUnimplementedFileServiceServer() {}
