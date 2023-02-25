@@ -56,7 +56,7 @@ func (file *FileServiceServer) Search(ctx context.Context, req *m1.SearchRequest
 
 	var res *m1.FileResponse
 	if found {
-		res = &m1.FileResponse{Name: []string{req.Name, "Found"}}
+		res = &m1.FileResponse{Name: []string{"Found"}}
 	} else {
 		res = &m1.FileResponse{Name: []string{"Not found"}}
 	}
@@ -65,26 +65,29 @@ func (file *FileServiceServer) Search(ctx context.Context, req *m1.SearchRequest
 }
 
 func start() *Configuration {
+	fmt.Println("Loading configuration")
 	config, err := loadConfig("../config")
 	if err != nil {
 		fmt.Println("Error loading configuration:", err)
 		return nil
 	}
+	fmt.Println("Configuration loaded succesfully")
 	return config
 }
 
 func main() {
+	fmt.Println("Starting gRPC server")
 	config := start()
 	dir = config.Directory
 
-	// Update with env
 	addr := net.JoinHostPort(config.IP, config.Port)
+
+	fmt.Printf("Starting listener at %s\n", addr)
 	lis, err := net.Listen("tcp", addr)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-
-	fmt.Printf("Starting listener at %s\n", addr)
+	fmt.Printf("Listener started succesfully")
 
 	fileServer := &FileServiceServer{}
 	grpcServer := grpc.NewServer()
