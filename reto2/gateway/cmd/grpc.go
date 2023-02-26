@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	m1 "retos/reto2/gateway/internal"
 
 	"golang.org/x/net/context"
@@ -25,4 +26,14 @@ func List(conn *grpc.ClientConn) (*m1.FileResponse, error) {
 
 func CreateConnection(url string) (*grpc.ClientConn, error) {
 	return grpc.Dial(url, grpc.WithInsecure())
+}
+
+func runGRPC(listenAddr string) *grpc.ClientConn {
+	// GRPC
+	fmt.Println("Connecting to GRPC server at", listenAddr)
+	connGRPC, err := CreateConnection(listenAddr)
+	failOnError(err, "Failed to connect to GRPC")
+	defer connGRPC.Close()
+	fmt.Println("Connected successfully")
+	return connGRPC
 }

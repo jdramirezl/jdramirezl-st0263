@@ -58,7 +58,7 @@ func (file *FileServiceServer) Search(ctx context.Context, req *m1.SearchRequest
 	if found {
 		res = &m1.FileResponse{Name: []string{"Found"}}
 	} else {
-		res = &m1.FileResponse{Name: []string{"Not found"}}
+		res = &m1.FileResponse{Name: []string{}}
 	}
 
 	return res, nil
