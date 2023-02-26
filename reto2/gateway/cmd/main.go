@@ -40,10 +40,11 @@ func main() {
 	chRabbit := CreateChannel(connRabbit)
 
 	// Create Queue
-	qRabbit := CreateQueue(chRabbit, "toServer")
+	qName := config.RabbitQ
+	qRabbit := CreateQueue(chRabbit, qName)
 
 	// Run HTTP
-	if err := RunHttp(apiAddr, connGRPC, qRabbit); err != nil {
+	if err := RunHttp(apiAddr, connGRPC, chRabbit, qRabbit); err != nil {
 		log.Fatal(err)
 	}
 }

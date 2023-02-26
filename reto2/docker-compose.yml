@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  grpc-server:
+    build:
+      context: .
+      dockerfile: micro1/Dockerfile
+    ports:
+      - "50051:50051"
+
+  rabbitmq:
+    build:
+      context: .
+      dockerfile: micro2/Dockerfile
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    ports:
+      - "8080:8080"

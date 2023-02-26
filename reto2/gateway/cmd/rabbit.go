@@ -20,17 +20,6 @@ type ResRabbit struct {
 	Files []string `json:"files"`
 }
 
-func joinResponseFiles(resp ResRabbit) string {
-	var result string
-	for i, file := range resp.Files {
-		if i > 0 {
-			result += ","
-		}
-		result += file
-	}
-	return result
-}
-
 func StructToJSON(message interface{}) ([]byte, error) {
 	return json.Marshal(message)
 }

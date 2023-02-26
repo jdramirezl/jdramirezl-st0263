@@ -85,14 +85,13 @@ func NewRouter(conn *grpc.ClientConn, chanRabbit *amqp.Channel, qRabbit amqp.Que
 			log.Printf("Response from GRPC: search")
 			var resGRPC *m1.FileResponse
 			resGRPC, err = Search(conn, name)
-			response = resGRPC.Name[0]
 
 			if len(resGRPC.Name) == 0 {
 				response = ""
 			} else {
 				response = resGRPC.Name[0]
 			}
-			
+
 		} else {
 			// RabbitMQ
 			log.Printf("Response from RabbitMQ: search")
