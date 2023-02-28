@@ -30,6 +30,11 @@ El microservicio 1 se conecta por gRPC y el microservicio 2 por RabbitMQ. Todo e
 - Ninguno
 
 # 2. información general de diseño de alto nivel, arquitectura, patrones, mejores prácticas utilizadas.
+La arquitectura general se ve a continuacion:
+<p align="center">
+<img src="https://user-images.githubusercontent.com/65835577/221764520-b30d16c1-7b11-4c62-9304-ac6f9b9f5740.png" alt="description of image" width="900" height="400" />
+</p>
+
 - Arquitectura: Microservicios. Cada microservicio se encarga de una funcionalidad
 - Patrón: BFF (Backend for Frontend). Una API que se comunica con los microservicios y presenta los datos al frontend. 
 - Los microservicios se comunican con el gateway con gRPC y RabbitMQ. 
@@ -62,9 +67,9 @@ El microservicio 1 se conecta por gRPC y el microservicio 2 por RabbitMQ. Todo e
 El proyecto se puede compilar y ejecutar desde docker.
 1. Descargar e instalar `Git`.
 2. Crear una cuenta de Github
-3. Clonar el proyecto desde Github mediante `git clone https://github.com/jdramirezl/jdramirezl-st0263/tree/master/reto2`
+3. Clonar el proyecto desde Github mediante `git clone https://github.com/jdramirezl/jdramirezl-st0263/`
 4. Descargar e instalar Docker.
-5. Desde una terminal, dirigirse al directorio que tenga el archivo `docker-compose.yml`
+5. Desde una terminal, dirigirse al directorio que tiene el archivo `docker-compose.yml`: `reto2`
 6. Correr `docker-compose up --build`
 
 ## detalles del desarrollo.
@@ -77,6 +82,7 @@ Cada servicio y el Gateway se pueden configurar a traves de un archivo .env que 
 Para modificarlos se hace necesario cambiar los valores despues el `=` que esta frente a cada variables 
 
 Para cada uno se ve asi:
+
 *Gateway*
 ```markdown
 # Puerto y dirección IP donde el API Gateway estará escuchando
@@ -119,6 +125,8 @@ QUEUE_NAME=requests
 ```
 
 ## Organización del código por carpetas o descripción de algún archivo.
+![treeeee](https://user-images.githubusercontent.com/65835577/221765124-fe16adb8-194e-43c2-91d8-4801ac5ee25e.png)
+
 
 
 # 4. Descripción del ambiente de EJECUCIÓN (en producción) lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
