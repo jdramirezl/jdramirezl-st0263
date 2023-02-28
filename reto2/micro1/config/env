@@ -1,0 +1,3 @@
+IP=grpc-server
+PORT=50051
+DIRECTORY=/app/files

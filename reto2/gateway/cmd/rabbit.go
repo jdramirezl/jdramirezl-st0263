@@ -24,7 +24,7 @@ func StructToJSON(message interface{}) ([]byte, error) {
 	return json.Marshal(message)
 }
 
-func JSONToStruct(jsonData []byte, message interface{}) (interface{}, error) {
+func JSONToStruct(jsonData []byte, message ResRabbit) (ResRabbit, error) {
 	err := json.Unmarshal(jsonData, &message)
 	return message, err
 }
@@ -72,9 +72,11 @@ func send(ch *amqp.Channel, q amqp.Queue, req ReqRabbit) (ResRabbit, error) {
 	// wait for the response message
 	for msg := range msgs {
 		if msg.CorrelationId == corrId {
-			var res ResRabbit
-			JSONToStruct(msg.Body, res)
-			failOnError(err, "Failed to convert JSON to struct")
+			fmt.Println("Received response")
+			fmt.Println(string(msg.Body))
+			var res ResRabbit = ResRabbit{}
+			res, errr := JSONToStruct(msg.Body, res)
+			failOnError(errr, "Failed to convert JSON to struct")
 			return res, nil
 		}
 	}
@@ -85,7 +87,7 @@ func send(ch *amqp.Channel, q amqp.Queue, req ReqRabbit) (ResRabbit, error) {
 func CreateQueue(ch *amqp.Channel, name string) amqp.Queue {
 	q, err := ch.QueueDeclare(
 		name,  // name
-		false, // durable
+		true,  // durable
 		false, // delete when unused
 		false, // exclusive
 		false, // no-wait
@@ -107,7 +109,7 @@ func runRabbitMQ(listenAddr string) *amqp.Connection {
 	fmt.Println("Connecting to RabbitMQ server at", listenAddr)
 	connRabbit, err := amqp.Dial("amqp://guest:guest@" + listenAddr + "/")
 	failOnError(err, "Failed to connect to RabbitMQ")
-	defer connRabbit.Close()
+
 	fmt.Println("Connected successfully")
 	return connRabbit
 }

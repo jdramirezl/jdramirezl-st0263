@@ -1,0 +1,4 @@
+IP=rabbitmq
+PORT=5672
+DIRECTORY=/app/files
+QUEUE_NAME=requests

@@ -33,7 +33,7 @@ func runGRPC(listenAddr string) *grpc.ClientConn {
 	fmt.Println("Connecting to GRPC server at", listenAddr)
 	connGRPC, err := CreateConnection(listenAddr)
 	failOnError(err, "Failed to connect to GRPC")
-	defer connGRPC.Close()
+	
 	fmt.Println("Connected successfully")
 	return connGRPC
 }

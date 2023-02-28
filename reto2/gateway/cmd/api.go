@@ -51,6 +51,7 @@ func NewRouter(conn *grpc.ClientConn, chanRabbit *amqp.Channel, qRabbit amqp.Que
 			var resGRPC *m1.FileResponse
 			log.Printf("Response from GRPC: list")
 			resGRPC, err = List(conn)
+			failOnError(err, "Failed to call List")
 			files = resGRPC.Name
 		} else {
 			// RabbitMQ
@@ -58,6 +59,8 @@ func NewRouter(conn *grpc.ClientConn, chanRabbit *amqp.Channel, qRabbit amqp.Que
 			log.Printf("Response from RabbitMQ: list")
 			req := ReqRabbit{Type: "list", Args: []string{}}
 			resRabbit, err = send(chanRabbit, qRabbit, req)
+			failOnError(err, "Failed to call List")
+			fmt.Printf("Response from RabbitMQ: %s", resRabbit.Files)
 			files = resRabbit.Files
 		}
 
@@ -96,7 +99,7 @@ func NewRouter(conn *grpc.ClientConn, chanRabbit *amqp.Channel, qRabbit amqp.Que
 			// RabbitMQ
 			log.Printf("Response from RabbitMQ: search")
 			var resRabbit ResRabbit
-			req := ReqRabbit{Type: "list", Args: []string{name}}
+			req := ReqRabbit{Type: "search", Args: []string{name}}
 			resRabbit, err = send(chanRabbit, qRabbit, req)
 
 			if len(resRabbit.Files) == 0 {

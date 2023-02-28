@@ -14,7 +14,7 @@ type Configuration struct {
 }
 
 func loadConfig(directory string) (*Configuration, error) {
-	file, err := os.Open(directory + "/.env")
+	file, err := os.Open(directory + "/env")
 	if err != nil {
 		return nil, err
 	}
@@ -37,7 +37,7 @@ func loadConfig(directory string) (*Configuration, error) {
 			config.Port = parts[1]
 		case "DIRECTORY":
 			config.Directory = parts[1]
-		case "RABBIT_QUEUE":
+		case "QUEUE_NAME":
 			config.QName = parts[1]
 		}
 	}

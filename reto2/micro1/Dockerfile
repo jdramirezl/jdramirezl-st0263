@@ -1,14 +1,16 @@
-FROM golang:1.17-alpine
+FROM golang:1.20
 
-WORKDIR /usr/src/app
 
-COPY micro1/go.mod micro1/go.sum ./
-RUN go mod download
+RUN apt update && apt upgrade -y && \
+    apt install -y git \
+    make openssh-client
+
+WORKDIR /app 
+
+RUN curl -fLo install.sh https://raw.githubusercontent.com/cosmtrek/air/master/install.sh \
+    && chmod +x install.sh && sh install.sh && cp ./bin/air /bin/air
 
 COPY . .
+COPY ./config/env ./config/env
 
-RUN go build -o grpc-server ./micro1/cmd
-
-EXPOSE 50051
-
-CMD ["./grpc-server"]
+RUN go mod download

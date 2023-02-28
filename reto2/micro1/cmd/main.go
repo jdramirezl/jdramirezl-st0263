@@ -66,7 +66,7 @@ func (file *FileServiceServer) Search(ctx context.Context, req *m1.SearchRequest
 
 func start() *Configuration {
 	fmt.Println("Loading configuration")
-	config, err := loadConfig("../config")
+	config, err := loadConfig("./config")
 	if err != nil {
 		fmt.Println("Error loading configuration:", err)
 		return nil

@@ -3,22 +3,50 @@ version: "3"
 services:
   grpc-server:
     build:
-      context: .
-      dockerfile: micro1/Dockerfile
+      context: ./micro1
+    command: air
     ports:
       - "50051:50051"
+    networks:
+      - reto-2
+    volumes:
+      - ./micro1:/app
 
-  rabbitmq:
+  rabbit-server:
     build:
-      context: .
-      dockerfile: micro2/Dockerfile
+      context: ./micro2
+    command: air
     ports:
       - "5672:5672"
-      - "15672:15672"
+    networks:
+      - reto-2
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672/
+    volumes:
+      - ./micro2:/app
+    
+
+  rabbitmq:
+    image: rabbitmq:3.8-management-alpine
+    expose:
+      - 5672
+    volumes:
+      - ./rabbit-definitions/definitions.json:/etc/rabbitmq/definitions.json
+    networks:
+      - reto-2
 
   gateway:
     build:
-      context: .
-      dockerfile: gateway/Dockerfile
+      context: ./gateway
+    command: air
     ports:
       - "8080:8080"
+    networks:
+      - reto-2
+    environment:
+      - RABBITMQ_URL=amqp://guest:guest@rabbitmq:5672/ 
+    volumes:
+      - ./gateway:/app
+
+networks:
+  reto-2:

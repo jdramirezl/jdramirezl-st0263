@@ -17,7 +17,7 @@ type Configuration struct {
 }
 
 func loadConfig(directory string) (*Configuration, error) {
-	file, err := os.Open(directory + "/.env")
+	file, err := os.Open(directory + "/env")
 	if err != nil {
 		return nil, err
 	}
