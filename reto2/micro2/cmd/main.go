@@ -167,7 +167,7 @@ func main() {
 
 	addr := net.JoinHostPort(config.IP, config.Port)
 
-	time.Sleep(5 * time.Second)
+	time.Sleep(10 * time.Second)
 	// Run RabbitMQ
 	// connRabbit := runRabbitMQ(addr)
 	fmt.Println("Startooo")

@@ -70,11 +70,19 @@ El proyecto se puede compilar y ejecutar desde docker.
 3. Clonar el proyecto desde Github mediante `git clone https://github.com/jdramirezl/jdramirezl-st0263/`
 4. Descargar e instalar Docker.
 5. Desde una terminal, dirigirse al directorio que tiene el archivo `docker-compose.yml`: `reto2`
-6. Correr `docker-compose up --build`
+6. Correr `docker-compose up --build` para construir y ejecutar el proyecto.
 
 ## detalles del desarrollo.
+- Lenguaje de programación: Golang
+- Control de versiones: Git
+- 
 
 ## detalles técnicos
+- Arquitectura/Patron: Microservicios y BFF
+- Plataforma de nube: AWS
+	* Servicios de nube usados: EC2 Ubuntu, Elastic IPs
+- Herramientas de orquestación: Docker
+- Comunicacion entre microservicios: gRPC y RabbitMQ
 
 ## descripción y como se configura los parámetros del proyecto
 Cada servicio y el Gateway se pueden configurar a traves de un archivo .env que tienen en su carpeta `/config/`
@@ -130,23 +138,53 @@ QUEUE_NAME=requests
 
 
 # 4. Descripción del ambiente de EJECUCIÓN (en producción) lenguaje de programación, librerias, paquetes, etc, con sus numeros de versiones.
+El ambiente en produccion cuenta con las mismas versiones, lenguajes y librerias del ambiente de desarrollo.
 
 # IP o nombres de dominio en nube o en la máquina servidor.
+Se usa una IP elastica de AWS para acceder a la maquina EC2
+- Gateway: 54.225.221.91:80
 
-## descripción y como se configura los parámetros del proyecto (ej: ip, puertos, conexión a bases de datos, variables de ambiente, parámetros, etc)
+## descripción y como se configura los parámetros del proyecto
+Las variables de ambiente son las mismas que las presentadas en desarrollo.
+
+Para modificarlas se hace en el mismo directorio `config` mencionado anteriormente pero conectados a la maquina remota.
+
+Una vez conectado, dirigirse al directorio `/home/ubuntu/project/reto2` donde encontraremos los archivos del proyecto.
+
+En las carpetas de `gateway`, `micro1` y `micro2` encontraremos los archivos `.env` en el directiorio `config` que contienen las variables de ambiente.
+
+Para las conexiones externas y entre servicios debemos tomar en cuenta que puertos se estan exponiendo y cuales no en el security group de la instancia de EC2.
+
+En este como la salida a HTTP se hace por el puerto 80 entonces se hace necesario cambiar este valor en el archivo `.env` de `gateway`
 
 ## como se lanza el servidor.
+1. Ingresar a AWS
+2. Acceder a la seccion de EC2
+3. Dar click en la instancia llamada `gateway`
+4. Correr la instancia desde `Instance State` -> `Start`
+5. Conectarse por alguna de las opciones que lista AWS (recomendado: `EC2 Instance Connect`)
+6. Una vez conectado, dirigirse al directorio `/home/ubuntu/project/reto2` donde encontraremos los archivos del proyecto
+7. Correr `docker-compose up`
+8. Esperar a que se construyan y ejecuten los contenedores
 
 ## una mini guia de como un usuario utilizaría el software o la aplicación
+Para conectarse al API Gateway se debe hacer una peticion HTTP a la IP elastica de AWS y al puerto 80. Ej:
+- `http://54.225.221.91:80`
 
-## opcionalmente - si quiere mostrar resultados o pantallazos 
+Aqui, mediante un `GET`, podemos acceder a dos endpoints: `/list` y `/search` 
+- `http://54.225.221.91:80/list` -> lista todos los archivos que se encuentran en el directorio `/files` (o el que se indique) de cada microservicio
+- `http://54.225.221.91:80/search?name=nombre_archivo` -> busca el archivo con el nombre `nombre_archivo` en el directorio `/files` (o el que se indique) de cada microservicio
+	* Si usamos Postman podemos poner, en la seccion Params, `name` en el campo key y el nombre del archivo en el campo `value` y hacer la peticion
 
-# 5. otra información que considere relevante para esta actividad.
+Como respuesta se obtiene un JSON con la informacion de los archivos encontrados.
 
 # referencias:
-<debemos siempre reconocer los créditos de partes del código que reutilizaremos, así como referencias a youtube, o referencias bibliográficas utilizadas para desarrollar el proyecto o la actividad>
-## sitio1-url 
-## sitio2-url
-## url de donde tomo info para desarrollar este proyecto
+- https://itnext.io/bff-pattern-with-go-microservices-using-rest-grpc-87d269bc2434?gi=2b74f1fa117c
+- https://www.rabbitmq.com/tutorials/tutorial-one-go.html
+- http://www.inanzzz.com/index.php/post/iamo/creating-a-rabbitmq-consumer-example-with-golang
+- https://levelup.gitconnected.com/creating-a-minimal-rabbitmq-client-using-go-cbcec1470950
+- https://grpc.io/docs/protoc-installation/
+- https://tutorialedge.net/golang/go-grpc-beginners-tutorial/
+- https://www.youtube.com/watch?v=BdzYdN_Zd9Q&ab_channel=TutorialEdge
 
-#### versión README.md -> 1.0 (2022-agosto)
+#### versión README.md -> 1.0 (2023-marzo)
