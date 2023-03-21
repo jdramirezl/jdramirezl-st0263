@@ -1,0 +1,17 @@
+version: '3'
+services:
+  wordpress2:
+    image: wordpress
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+     WORDPRESS_DB_HOST: 10.128.0.5:3306
+     WORDPRESS_DB_USER: jdramirezl
+     WORDPRESS_DB_PASSWORD: 123
+     WORDPRESS_DB_NAME: db
+    volumes:
+      - wp-content:/var/www/html/wp-content
+
+volumes:
+  wp-content:
