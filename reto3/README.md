@@ -184,13 +184,21 @@ Con el servidor ya corriendo:
 
 # referencias:
 [ssl ](https://www.namecheap.com/support/knowledgebase/article.aspx/9419/33/installing-an-ssl-certificate-on-nginx/)
+
 [NFS](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-20-04)
+
 [Nginx](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04-es)
+
 [load balancing](https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/)
+
 [Wordpress](https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-docker-compose-es)
+
 [MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04-es)
+
 [google cloud](https://cloud.google.com/vpc/docs/create-use-multiple-interfaces)
+
 [URL para la informacion del proyecto](https://interactivavirtual.eafit.edu.co/d2l/le/content/122343/viewContent/601635/View)
+
 
 #### versión README.md -> 1.0 (2023-marzo)
 
