@@ -178,6 +178,8 @@ Con el servidor ya corriendo:
 
 ## Resultados
 ![wordpress funcionando](https://user-images.githubusercontent.com/65835577/227088996-b96b7720-84d7-40d5-9695-b6e4eed67695.png)
+![Instancias corriendo](https://user-images.githubusercontent.com/65835577/227089205-475fe109-28bf-409d-8062-2ed7bfe3d381.png)
+
 
 
 # referencias:
