@@ -180,6 +180,11 @@ Con el servidor ya corriendo:
 ![wordpress funcionando](https://user-images.githubusercontent.com/65835577/227088996-b96b7720-84d7-40d5-9695-b6e4eed67695.png)
 ![Instancias corriendo](https://user-images.githubusercontent.com/65835577/227089205-475fe109-28bf-409d-8062-2ed7bfe3d381.png)
 
+# Comentarios
+
+Al acceder por HTTPS al sitio web aparecera una alerta por parte de Chrome (Donde lo probe) de peligro al acceder. Esto puede suceder al crear propiamente los certificados, lo cual paso en mi caso.
+
+Sin embargo, el acceso por HTTPS sigue funcionando completamente y las configuraciones en NGINX son funcionales tambien
 
 
 # referencias:
