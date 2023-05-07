@@ -38,23 +38,28 @@ N/A
 Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqui presionamos el boton `Create Cluster`. Aqui tendremos que dar las siguientes opciones
 
 1. Nombrar el cluster
-2. 
+
 ![Screenshot 2023-05-07 132504](https://user-images.githubusercontent.com/65835577/236702067-14ba0500-8318-4299-ad05-9da0d3336f3f.png)
 
 2. Elegimos la version del EMR (6.3.1 en mi caso) y application bundle, que sera `Custom` pues nosotros queremos elegir las app especificas
+
 ![Screenshot 2023-05-07 132521](https://user-images.githubusercontent.com/65835577/236702087-24c56008-016d-4aff-b0f3-95ef8613fa43.png)
 
 3. Para las instancias de EC2 elegimos `m4.xlarge` para usar con la cuenta de education. Ademas definimos un spot price con el modo `On-Demand`. Lo hacemos para el primary, core y task.
+
 ![Screenshot 2023-05-07 132539](https://user-images.githubusercontent.com/65835577/236702091-ca34fe5b-5729-42e6-b084-5c93e3cf3001.png)
 
 4. Para la terminacion del cluster definimos `1 hora`
+
 ![Screenshot 2023-05-07 132600](https://user-images.githubusercontent.com/65835577/236702096-76d5c756-af3a-4770-8ec6-3f1fd714344b.png)
 
 5. Definimos el bucket de S3 a usar en `Software Settings`. En las referencias se tiene el sitio desde el cual se copio la configuracion. Yo nombre mi bucket como `reto5-notebooks`
   * Tambien es necesario crear el Bucket en S3, no solo nombrarlo en el config. Se debe llamar igual.
+
 ![Screenshot 2023-05-07 132612](https://user-images.githubusercontent.com/65835577/236702099-db15438f-4c30-463a-b46c-01b6b3c37d53.png)
 
 6. Por ultimo definimos una key para poder hacer SSH al cluster, en mi caso use uno propio `reto5-keypair`.
+
 ![image](https://user-images.githubusercontent.com/65835577/236702124-9b746dc2-c6bb-4bf0-946a-d115e4841f9b.png)
 
 
@@ -62,20 +67,25 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 
 1. Nos conectamos al cluster, especificamente a la instancia `EC2` primaria a traves de SSH. Hay opciones para Windows, Linux y Mac. En mi caso yo me conecte a traves de WSL.
     * Recordar entrar al `Security Group` de la instancia y permitir el trafico de SSH.
+
 ![ssh connect](https://user-images.githubusercontent.com/65835577/236702148-744f7bc0-f0a4-4fb0-b6e0-eb98b92e4257.png)
 ![conectssh](https://user-images.githubusercontent.com/65835577/236702154-96ecadd8-966e-42dc-99ba-d7c3199578b4.png)
 ![acceso al nodo master](https://user-images.githubusercontent.com/65835577/236702162-9fa53795-3e20-472f-bfa4-36a5fdc368cd.png)
 
 2. En las pestana `Applications` del cluster revisamos los puertos de las aplicaciones `Hue`, `JupyterHub` y `Zeppelin`.
+
 ![ips apps](https://user-images.githubusercontent.com/65835577/236702173-a130e3b4-741a-4912-8701-77cc82876301.png)
 
 3. Estos les tendremos que permitir el trafico en la pestana `Block Public Access` de la seccion izquierda. Aqui adentro podremos agregar las IP
+
 ![block public access](https://user-images.githubusercontent.com/65835577/236702179-2ad11b90-65f6-4355-86d0-80750ca65cdc.png)
 
 4. Igualmente estos puertos los tendremos que poner en el Security group de la instancia privada. Para acceder a esta ingresamos a la informacion del cluster, bajamos a `Network and security` y damos click al SG del `Primary Node`.
+
 ![primary cluster security](https://user-images.githubusercontent.com/65835577/236702210-804f564d-8142-4e33-92be-3475dda987b9.png)
 
 5. Una vez adentro agregamos una regla por puerto, poniendo este y un acceso publico con `0.0.0.0/0`
+
 ![new rules secirtury group](https://user-images.githubusercontent.com/65835577/236702195-7c61a9fc-6f61-4e14-abd1-55ce42fca319.png)
 
 # Referencias
