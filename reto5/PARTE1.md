@@ -38,6 +38,7 @@ N/A
 Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqui presionamos el boton `Create Cluster`. Aqui tendremos que dar las siguientes opciones
 
 1. Nombrar el cluster
+2. 
 ![Screenshot 2023-05-07 132504](https://user-images.githubusercontent.com/65835577/236702067-14ba0500-8318-4299-ad05-9da0d3336f3f.png)
 
 2. Elegimos la version del EMR (6.3.1 en mi caso) y application bundle, que sera `Custom` pues nosotros queremos elegir las app especificas
