@@ -30,8 +30,6 @@ N/A
     * Livy
     * HCatalog
 
- # IP o nombres de dominio en nube
-
  # Descripcion de la configuracion del proyecto
 
 ## Crear el cluster
