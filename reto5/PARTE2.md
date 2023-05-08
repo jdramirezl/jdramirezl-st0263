@@ -28,23 +28,45 @@ N/A
 
 # Ejecucion de la actividad
 
+Antes de empezar vamos a hacer dos cosas:
+
+1. Para subir los datos en HUE primero crearemos un directorio donde almacenaremos estos datasets. En mi caso es `/user/jdramirezl/datasets`.
+
+2. Conseguiremos los datasets en este EC2 primario. Para esto yo descargue los datos en mi maquina local y los copie con el comando ` scp -i ~/reto5-keypair.pem -r ~/datasets  hadoop@ec2-34-237-52-15.compute-1.amazonaws.com:~`
+
 ## Copia por SSH
-### HUE
-
-Para subir los datos en HUE primero crearemos un directorio donde almacenaremos estos datasets. En mi caso es `/user/jdramirezl/datasets`.
-
-
-Habiendo hecho esto ahora conseguiremos los datasets en este EC2 primario. Para esto yo descargue los datos en mi maquina local y los copie con el comando ` scp -i ~/reto5-keypair.pem -r ~/datasets  hadoop@ec2-34-237-52-15.compute-1.amazonaws.com:~`
-
+### HDFS
 
 Teniendo los archivos descargados en nuestra maquina local, ahora los podremos subir con ` hdfs dfs -copyFromLocal ~/datasets/* /user/jdramirezl/datasets/` ya que queria hacer la copia recursiva
 
 
+### S3
 
+Como el EC2 Primario se encuentra en la red de EMR podemos usar la libreria `aws s3`. Con esto entonces hacemos `aws s3 cp ~/datasets/ s3://reto5-notebooks --recursive`
 
+## Copia por HUE
+### HDFS
 
+Primero ingresamos a la pestana `Files`
+
+Como quedamos en el usuario Hadoop nos moveremos al directorio con nuestro username (En mi caso `jdramirezl`).
+
+En el boton `new` podemos crear un nuevo directorio. En mi caso yo lo llame `datasets-hue`
+
+Hue no nos permite subir carpetas, por lo que tendremos que crear cada directorio individualmente
+
+Y luego en cada directorio subir los archivos manualmente.
 
 ### S3
-## Copia por HDFS
-### HUE
-### S3
+
+Primero ingresamos a la pestana `S3`
+
+Ahi ya estaremos adentro del Bucket. En mi caso `reto5-notebooks`. Aqui crearemos un folder para guardar los datos, en mi caso `datasets-hue`
+
+Aqui tendremos que repetir la misma operacion como con HDFS, donde creamos cada directorio individualmente y le subimos sus respectivos archivos
+
+
+# Resultados
+
+
+# Referencias
