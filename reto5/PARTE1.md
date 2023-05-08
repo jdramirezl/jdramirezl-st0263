@@ -12,6 +12,10 @@ Realizar el montaje de un servicio de EMR (Elastic Map Reduce) en AWS para usar 
 
 ## Que aspectos cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
 - Crear un cluster EMR en AWS
+- Crear un Key-Pair para el cluster
+- Configurar un Bucket de S3 para el cluster
+- Realizar el montaje de las aplicaciones
+- Configurar Hue, Jupyter y Zeppelin
 
 ## Que aspectos NO cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
 N/A
@@ -30,7 +34,6 @@ N/A
     * Livy
     * HCatalog
 
- # Descripcion de la configuracion del proyecto
 
 ## Crear el cluster
 Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqui presionamos el boton `Create Cluster`. Aqui tendremos que dar las siguientes opciones
