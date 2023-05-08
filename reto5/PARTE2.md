@@ -26,3 +26,25 @@ N/A
 * SSH 
 * Ubuntu 22.04
 
+# Ejecucion de la actividad
+
+## Copia por SSH
+### HUE
+
+Para subir los datos en HUE primero crearemos un directorio donde almacenaremos estos datasets. En mi caso es `/user/jdramirezl/datasets`.
+
+
+Habiendo hecho esto ahora conseguiremos los datasets en este EC2 primario. Para esto yo descargue los datos en mi maquina local y los copie con el comando ` scp -i ~/reto5-keypair.pem -r ~/datasets  hadoop@ec2-34-237-52-15.compute-1.amazonaws.com:~`
+
+
+Teniendo los archivos descargados en nuestra maquina local, ahora los podremos subir con ` hdfs dfs -copyFromLocal ~/datasets/* /user/jdramirezl/datasets/` ya que queria hacer la copia recursiva
+
+
+
+
+
+
+### S3
+## Copia por HDFS
+### HUE
+### S3
