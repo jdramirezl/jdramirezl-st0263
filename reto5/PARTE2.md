@@ -67,6 +67,14 @@ Aqui tendremos que repetir la misma operacion como con HDFS, donde creamos cada 
 
 
 # Resultados
+Podemos encontrar los resultados por medio de las imagenes subidas anteriormente, pero tambien se adjuntan los archivos en el bucket de s3 dentro de AWS
+
+
 
 
 # Referencias
+[Enunciado del reto](https://github.com/st0263eafit/st0263-231/blob/main/bigdata/lab5-2-hdfs-s3.txt)
+[Explicacion HDFS en HUE y SSH](https://github.com/st0263eafit/st0263-231/tree/main/bigdata/01-hdfs)
+[Dataset subido](https://github.com/st0263eafit/st0263-231/tree/main/bigdata/datasets)
+[copy files to s3 bucket through ssh](https://www.middlewareinventory.com/blog/ec2-s3-copy/)
+[AWS S3 Invalid length for parameter Key - Subir archivos recursivos a S3](https://storiesbynazreen.medium.com/quick-debug-aws-s3-invalid-length-for-parameter-key-4e07359b396d)
