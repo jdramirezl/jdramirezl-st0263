@@ -124,14 +124,25 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 
 ![ze ppelin url](https://user-images.githubusercontent.com/65835577/236714001-e5c69488-00da-4c99-a604-fd3dd2951bc0.png)
 
+![in zeppelin](https://user-images.githubusercontent.com/65835577/236715305-5cc7711c-5344-4e6c-bfc2-dafc8aaf5595.png)
+
 2. Creamos un nuevo notebook en `Create new note`. Le damos nombre y le elegimos como `Default interpreter` a `Spark`
 
+![nueva nota zeppe](https://user-images.githubusercontent.com/65835577/236715311-46170171-e737-47a5-9d11-5e7f46513a93.png)
+
 3. Ya adentro probamos las variables `%spark.pyspark` y `spark` para probar el correcto funcionamiento del interprete
+
+![zeppelin bien 2](https://user-images.githubusercontent.com/65835577/236715316-5c0c7390-a76f-4071-a624-2f92ac72f5af.png)
 
 
 # Resultados
 Podemos evidenciar como en el bucket que habiamos creado inicialmente esta el archivo de Jupyter respectivo
 
+![resultado bucket](https://user-images.githubusercontent.com/65835577/236715320-d2601eef-b630-478a-973b-9fa0ced3a4da.png)
+
 
 # Referencias
 [EMR Software config](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-jupyterhub-s3.html)
+[Video: Como crear el EMR](https://www.youtube.com/watch?v=MyXSwxN5Zdk)
+[Video: Como configurar las Apps](https://www.youtube.com/watch?v=3sao-qJG34Y)
+[Enunciado del reto](https://github.com/st0263eafit/st0263-231/blob/main/bigdata/README.md)
