@@ -113,7 +113,13 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 
 2. No tenemos que crear cuenta, ingresamos con las credenciales por defecto de user `jovyan` y contrasena `jupyter`
 
+![sign in jupyter](https://user-images.githubusercontent.com/65835577/236714428-f1efe180-6836-4f39-b70b-576ce8ea973b.png)
+
 3. Probamos creando un notebook PySpark y probamos que funcionen las variables de `spark` y `sc` copiandolas en las casillas del notebook.
+
+![ne notebook jupyeter](https://user-images.githubusercontent.com/65835577/236714433-4adac260-31c2-48e0-8932-fab01dbc7130.png)
+
+![spark funcionando jupyter](https://user-images.githubusercontent.com/65835577/236714438-72ec5be5-9d25-43d1-b989-e81ef8176051.png)
 
 ### Zeppelin
 1. Ingresamos a la URL de `Zeppelin` y entramos sin usuario
