@@ -63,7 +63,7 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 ![image](https://user-images.githubusercontent.com/65835577/236702124-9b746dc2-c6bb-4bf0-946a-d115e4841f9b.png)
 
 
-## Configurar las Apps
+## Configuracion y permisos de red
 
 1. Nos conectamos al cluster, especificamente a la instancia `EC2` primaria a traves de SSH. Hay opciones para Windows, Linux y Mac. En mi caso yo me conecte a traves de WSL.
     * Recordar entrar al `Security Group` de la instancia y permitir el trafico de SSH.
@@ -87,6 +87,38 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 5. Una vez adentro agregamos una regla por puerto, poniendo este y un acceso publico con `0.0.0.0/0`
 
 ![new rules secirtury group](https://user-images.githubusercontent.com/65835577/236702195-7c61a9fc-6f61-4e14-abd1-55ce42fca319.png)
+
+## Ingreso y configuracion de las Apps
+
+- Volvemos a la informacion del cluster y accedemos a la pestana `Applications`. Aqui encontraremos las URL para los servicios instalados en el cluster. 
+
+### Hue
+1. Ingresamos a la URL de `Hue`
+
+2. Cuando entramos por primera vez debemos crear una cuenta, que en este ejercicio sera con user `Hadoop`.
+
+3. Aqui tenemos muchas opciones disponibles como Spark, Hive, archivos HDFS y S3. A continuacion evidencia de que el bucket creado en la configuracion esta en Hue
+
+### JupyterHub
+1. Ingresamos a la URL de `JupyterHub`
+
+2. No tenemos que crear cuenta, ingresamos con las credenciales por defecto de user `jovyan` y contrasena `jupyter`
+
+3. Probamos creando un notebook PySpark y probamos que funcionen las variables de `spark` y `sc` copiandolas en las casillas del notebook.
+
+### Zeppelin
+1. Ingresamos a la URL de `Zeppelin` y entramos sin usuario
+
+2. Creamos un nuevo notebook en `Create new note`. Le damos nombre y le elegimos como `Default interpreter` a `Spark`
+
+
+
+
+
+
+
+
+
 
 # Referencias
 [EMR Software config](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-jupyterhub-s3.html)
