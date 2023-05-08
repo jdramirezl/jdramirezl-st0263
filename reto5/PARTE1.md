@@ -91,16 +91,21 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 ## Ingreso y configuracion de las Apps
 
 - Volvemos a la informacion del cluster y accedemos a la pestana `Applications`. Aqui encontraremos las URL para los servicios instalados en el cluster. 
+![ips apps](https://user-images.githubusercontent.com/65835577/236713959-ff21edcd-136c-415c-8a07-c570ed9179aa.png)
 
 ### Hue
 1. Ingresamos a la URL de `Hue`
+![hue url](https://user-images.githubusercontent.com/65835577/236713976-006d3280-a6d6-4f72-9ccf-9e639211164c.png)
 
 2. Cuando entramos por primera vez debemos crear una cuenta, que en este ejercicio sera con user `Hadoop`.
+![hue cuenta](https://user-images.githubusercontent.com/65835577/236713972-a69c9265-72f5-4c03-8e8a-b052f2d36b30.png)
 
 3. Aqui tenemos muchas opciones disponibles como Spark, Hive, archivos HDFS y S3. A continuacion evidencia de que el bucket creado en la configuracion esta en Hue
+![hue buckets](https://user-images.githubusercontent.com/65835577/236713980-2eb549d7-6b45-4f04-8cc3-118724bb655d.png)
 
 ### JupyterHub
 1. Ingresamos a la URL de `JupyterHub`
+![jupyter url](https://user-images.githubusercontent.com/65835577/236713985-0527912f-2aea-4782-8d26-e472f99cc7c2.png)
 
 2. No tenemos que crear cuenta, ingresamos con las credenciales por defecto de user `jovyan` y contrasena `jupyter`
 
@@ -108,6 +113,7 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 
 ### Zeppelin
 1. Ingresamos a la URL de `Zeppelin` y entramos sin usuario
+![ze ppelin url](https://user-images.githubusercontent.com/65835577/236714001-e5c69488-00da-4c99-a604-fd3dd2951bc0.png)
 
 2. Creamos un nuevo notebook en `Create new note`. Le damos nombre y le elegimos como `Default interpreter` a `Spark`
 
