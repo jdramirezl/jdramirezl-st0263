@@ -122,6 +122,11 @@ Para crear un EMR nos dirigimos a la pestana de `Amazon EMR` en AWS. Una vez aqu
 
 2. Creamos un nuevo notebook en `Create new note`. Le damos nombre y le elegimos como `Default interpreter` a `Spark`
 
+3. Ya adentro probamos las variables `%spark.pyspark` y `spark` para probar el correcto funcionamiento del interprete
+
+
+# Resultados
+Podemos evidenciar como en el bucket que habiamos creado inicialmente esta el archivo de Jupyter respectivo
 
 
 # Referencias
