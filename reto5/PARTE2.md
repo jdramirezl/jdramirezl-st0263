@@ -100,10 +100,19 @@ Y si revisamos en el bucket, si se creo la carpeta con archivos
 
 
 # Resultados
-Podemos encontrar los resultados por medio de las imagenes subidas anteriormente, pero tambien se adjuntan los archivos en el bucket de s3 dentro de AWS ([URL a los archivos del bucket](https://reto5-notebooks.s3.amazonaws.com/datasets-hue/))
+Podemos encontrar los resultados por medio de las imagenes subidas anteriormente, pero tambien se adjuntan los archivos en el bucket de s3 dentro de AWS
 
 ![s3 llenado ](https://user-images.githubusercontent.com/65835577/236963089-a1a52b14-2158-492f-9187-d6cb085277e0.png)
 
+LINKS DEL BUCKET:
+* URL: https://reto5-notebooks.s3.amazonaws.com/datasets-hue/.
+* URI: s3://reto5-notebooks/datasets-hue/
+
+Ya estan configurados todos los accesos publicos como se veran a continuacion. Sin embargo no se puede acceder directamente ya que es un folder, es importante saber que cada objeto tiene su propia URL para acceder a ella
+
+![image](https://user-images.githubusercontent.com/65835577/236980118-fe7f5a19-3404-48f0-8a78-cb0a874d4b79.png)
+
+![image](https://user-images.githubusercontent.com/65835577/236980138-b866f16d-7fc1-4fff-853e-e7b73a435987.png)
 
 
 # Referencias
