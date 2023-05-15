@@ -146,6 +146,9 @@ Podemos evidenciar como en el bucket que habiamos creado inicialmente esta el ar
 
 # Referencias
 [EMR Software config](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-jupyterhub-s3.html)
+
 [Video: Como crear el EMR](https://www.youtube.com/watch?v=MyXSwxN5Zdk)
+
 [Video: Como configurar las Apps](https://www.youtube.com/watch?v=3sao-qJG34Y)
+
 [Enunciado del reto](https://github.com/st0263eafit/st0263-231/blob/main/bigdata/README.md)
