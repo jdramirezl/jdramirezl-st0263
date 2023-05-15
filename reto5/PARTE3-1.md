@@ -48,3 +48,11 @@ N/A
   - MRJob
 
 # Ejecucion de la actividad
+
+Para ejecutar localmente los ejercicios se hace necesario instalar MRJob, una libreria para ejecutar map-reduce en python. La instalamos con el comando `pip install mrjob`
+
+Despues de eso descargamos los datasets necesarios para el ejercicio. Estos son `datapeliculas`, `dataempresas` y `dataempleados`
+
+A partir de esto comenzamos a resolver los ejercicios.
+
+Los archivos con el codigo solucion y con el output guardado en un TXT se encuentran en la carpeta `parte3-1`.
