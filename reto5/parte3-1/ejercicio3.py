@@ -84,8 +84,8 @@ class GeneroRating(MRJob):
             if key not in values:
                 values[key] = []
             values[key].append(float(val))
-        diamax, pelmax = max(values.items(), key=lambda x: sum(x[1])/len(x[1]))
-        diamin, pelmin = min(values.items(), key=lambda x: sum(x[1])/len(x[1]))
+        diamax, _ = max(values.items(), key=lambda x: sum(x[1])/len(x[1]))
+        diamin, _ = min(values.items(), key=lambda x: sum(x[1])/len(x[1]))
         yield genre, diamax
         yield genre, diamin
 
