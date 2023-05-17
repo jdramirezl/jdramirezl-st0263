@@ -14,14 +14,15 @@ Realizar ejercicios de MAP-REDUCE en EMR con SPARK
 
 ## Que aspectos cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
 
-- ejecutar el wordcount por linea de comando 'pyspark' INTERACTIVO en EMR con datos en HDFS vía ssh en el nodo master.
+- Ejecutar el wordcount por linea de comando 'pyspark' INTERACTIVO en EMR con datos en HDFS vía ssh en el nodo master.
 
-- ejecutar el wordcount por linea de comando 'pyspark' INTERACTIVO en EMR con datos en S3 (tanto de entrada como de salida)  vía ssh en el nodo master.
+- Ejecutar el wordcount por linea de comando 'pyspark' INTERACTIVO en EMR con datos en S3 (tanto de entrada como de salida)  vía ssh en el nodo master.
 
-- ejecutar el wordcount en JupyterHub Notebooks EMR con datos en S3 (tanto datos de entrada como de salida) usando un clúster EMR.
+- Ejecutar el wordcount en JupyterHub Notebooks EMR con datos en S3 (tanto datos de entrada como de salida) usando un clúster EMR.
 
-- Replique, ejecute y EXPLIQUE el notebook: Data_processing_using_PySpark.ipynb con los datos respectivos en S3
-  ejecutelo en AWS EMR notebooks jupyterhub o en AWS EMR zeppelin.
+- Ejecutar el notebook `Data_processing_using_PySpark` con datos desde S3
+
+- Explicar el notebook: Funcionamiento y salida
 
 ## Que aspectos NO cumplió o desarrolló de la actividad propuesta por el profesor (requerimientos funcionales y no funcionales)
 
