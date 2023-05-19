@@ -45,7 +45,25 @@ Ya haciendo esto podemos comenzar con cada punto
 
 ## Wordcount interactivo con HDFS
 
+- Al entrar y verificar que los archivos estan en HDFS corremos `pyspark`
+
+  - Este nos va a permitir correr interactivamente cada linea
+
+- Siendo asi tomamos el codigo de `wordcount` que se encuentra en el github de los retos y corremos linea por linea.
+
+  - Podemos ir viendo el output en la linea del print que va mostrando ciertas palabras y sus cuentas
+  - Podemos ver que el input esta en hdfs en la carpeta `user/hadoop/gutenberg-small` y tomamos todos los archivos txt con el operador `wildcard`
+  - El output lo guardamos en `$USER/tmp/wcout1`
+
 - Cada paso que ejecutamos nos da una serie de steps que representan el proceso de carga del codigo enviado
+
+- Una vez terminado todo cerramos la sesion con `C-d` y mostramos la salida con un `ls` del hdfs
+
+- Para revisar los resultados vamos a guardar en la maquina local del nodo el output de uno de estos archivos de `wcout1` y lo leemos con vim
+
+- Una vez adentro, podemos ver el wordcout ejecutado
+
+- Adentro de HUE podemos revisar que la carpeta `tmp/wcout1` existe y tiene los mismos archivos vistos por consola
 
 ## Wordcount interactivo por S3
 
