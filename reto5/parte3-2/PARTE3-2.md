@@ -55,6 +55,14 @@ Ya haciendo esto podemos comenzar con cada punto
   - Podemos ver que el input esta en hdfs en la carpeta `user/hadoop/gutenberg-small` y tomamos todos los archivos txt con el operador `wildcard`
   - El output lo guardamos en `$USER/tmp/wcout1`
 
+- A diferencia del codigo visto con MRJob, aqui corremos funciones aplicadas directamente sobre los archivos leidos en memoria. Ya que finalmente estos son parte de `sc`
+
+  - flatMap: Aplicamos funcion sobre las lineas (Aqui split)
+  - map: Ap;icamos funcion sobre los objetos (Aqui mapear cada palabra con 1)
+  - reduceByKey: Reducir objetos dados bajo una funcion (Aqui, una funcion anonima que dadas dos entradas las suma y devuelve)
+  - sortBy: Organizar bajo un criterio (Aqui dado un par en tupla, organizamos en reversa con el `-` bajo el segundo elemento a[1])
+  - take: Tomamos una muestra de todo el output
+
 - Cada paso que ejecutamos nos da una serie de steps que representan el proceso de carga del codigo enviado
 
 - Una vez terminado todo cerramos la sesion con `C-d` y mostramos la salida con un `ls` del hdfs
@@ -80,9 +88,20 @@ Ya haciendo esto podemos comenzar con cada punto
 
 ## Wordcount por jupyter por S3
 
+- Como hemos vistos en labs anteriores, con el cluster de EMR ya corriendo podemos entrar a JupyterHub y crear un nuevo notebook con el kernel de `PySpark`. Una vez adentro podemos iniciar el kernel con `spark` y `sc`
+
+- A partir de esto ya podemos leer el input con la funcion `textFile` y pasando la ruta desde S3 (En este caso `S3://reto5_notebooks/.../gutenberg-small/*.txt`)
+
+- Realizamos el mismo codigo de ambos puntos anteriores sin imprimir
+
+- Realizamos un output a S3 pero a una carpeta llamada `jupyter`
+
 ## Explicacion del notebook `Data_processing_using_PySpark`
 
-### Ejecucion del notebook en `jupyterhub` por S3
+- Este codigo nos permite entender como podemos manipular datos (datasets, etc) a traves de pyspark en el kernel de jupyer.
+- Es manipulacion habitual de datos como se hace con scipy, pandas o numpy pero todo a traves de pyspark
+- Encontramos maneras de agregar, quitar y derviar columnas. Tambien de encontrar medidas de centralizacion, etc.
+- **EN EL JUPYTER EN ESTE MISMO DIRECTORIO SE ENCUENTRA LA EXPLICACION LINEA POR LINEA**
 
 # Conclusiones
 

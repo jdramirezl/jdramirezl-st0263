@@ -55,4 +55,6 @@ Despues de eso descargamos los datasets necesarios para el ejercicio. Estos son 
 
 A partir de esto comenzamos a resolver los ejercicios.
 
-Los archivos con el codigo solucion y con el output guardado en un TXT se encuentran en la carpeta `parte3-1`.
+- Los codigos estan en la carpeta `./codigos`
+- Los resultados estan en la carpeta `./outputs`
+- Los datasets estan en la carpeta `./datasets`
