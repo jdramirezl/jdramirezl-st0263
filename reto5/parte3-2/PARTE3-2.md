@@ -67,6 +67,17 @@ Ya haciendo esto podemos comenzar con cada punto
 
 ## Wordcount interactivo por S3
 
+- Igual que en el punto anterior (Y sabiendo que los datasets ya estan en S3) abrimos pyspark y comenzamos ejecucion
+
+- El codigo a pesar de ser igual internamente cambia con el input y output
+
+  - Sacamos los datos de S3 a traves de `S3://reto5_notebooks/.../*.txt`
+  - Los guardamos en el mismo formato de `S3://reto5_notebooks/.../tmp/wcout1`
+
+- Podemos revisar que la salida es correcta entrando al bucket y verificando que la carpeta se creo y por dentro tiene los archivos de resultado
+
+- Tambien verificamos en el S3 de HUE
+
 ## Wordcount por jupyter por S3
 
 ## Explicacion del notebook `Data_processing_using_PySpark`
